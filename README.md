@@ -15,3 +15,16 @@ The goal of this exercise is to create a URL shortener web application in the sa
 - We will execute your code using the `make` targets specified in `Makefile`. Edit the contents of `Makefile` to provide an interface for running and testing your application.
 - Include any other notes for our engineering team that you would like regarding your approach, assumptions you have made, how to run your code, how to use your application, etc in a file named `notes.txt`.
 - E-mail the point of contact that sent you this exercise and include either a link to a hosted repository (GitHub, GitLab, etc) or a compressed archive (.zip, .tar.gz) containing your solution and `Makefile`.
+
+## Evaluation
+Your submission will be evaluated along the following criteria by the Reviewer
+-Completeness - Does your submission meet the Application Requirements and Deliverables specified at https://github.com/stordco/url-shortener?
+- Testing - evaluate your use of test coverage to allow for iterative development
+- Ease of setup - how easy was it for the Reviewer to setup and run your app
+- Front end design - what is your familiarity with html, css, and front-end javascript frameworks; how thoroughly did you consider the User Experience for this application?
+- Technical design - separation of concerns, adherence to certain 12 factor App principles, knowledge of backend frameworks, security concerns, etc.
+-- Note on the Database-  We would like you to use a persistent datastore. Please be ready to speak to your choices here.
+### Notes:  
+- The hope is that this exercise will take a qualified candidate 2-4 hours.  Please let us know how much time you spent so that we can iterate based on your feedback.  
+- The good news is that we will not subject you to a code exercise on a whiteboard when you are on-site!"
+- You can use any language because we are looking for where your strengths as an engineering, more so than strengths with any particularly technology.  Please show us your strengths for coding, testing, user experience, technical design, and attention to detail
