@@ -18,7 +18,7 @@ The goal of this exercise is to create a URL shortener web application in the sa
 
 ## Evaluation
 Your submission will be evaluated along the following criteria by the Reviewer
-- Completeness - Does your submission meet the Application Requirements and Deliverables specified at https://github.com/stordco/url-shortener?
+- Completeness - Does your submission meet the Application Requirements and Deliverables specified above?
 - Testing - evaluate your use of test coverage to allow for iterative development
 - Ease of setup - how easy was it for the Reviewer to setup and run your app
 - Front end design - what is your familiarity with html, css, and front-end javascript frameworks; how thoroughly did you consider the User Experience for this application?
