@@ -26,6 +26,6 @@ Your submission will be evaluated along the following criteria by the Reviewer
 -- Note on the Database-  We would like you to use a persistent datastore. Please be ready to speak to your choices here.
 ### Notes:  
 - The hope is that this exercise will take a qualified candidate 2-4 hours.  Please let us know how much time you spent so that we can iterate based on your feedback.  
-- The good news is that we will not subject you to a code exercise on a whiteboard when you are on-site!"
-- You can use any language because we are looking for your strengths as an engineering, more so than strengths with any particularly technology.  Please show us your strengths for coding, testing, user experience, technical design, and attention to detail. 
+- The good news is that we will not subject you to a code exercise on a whiteboard when you are on-site!
+- You can use any language because we are looking for your strengths as an engineer, more so than your strengths with any particularly technology.  Please show us your strengths for coding, testing, user experience, technical design, and attention to detail. 
 - Thank you for the time you are spending as a candidate with STORD!
