@@ -28,4 +28,5 @@ Your submission will be evaluated along the following criteria by the Reviewer
 - The hope is that this exercise will take a qualified candidate 2-4 hours.  Please let us know how much time you spent so that we can iterate based on your feedback.  
 - The good news is that we will not subject you to a code exercise on a whiteboard when you are on-site!
 - You can use any language because we are looking for your strengths as an engineer, more so than your strengths with any particularly technology.  Please show us your strengths for coding, testing, user experience, technical design, and attention to detail. 
+- Curious about the performance requirements for this exercise?  This should be able to handle at least 5 requests per second.  During the on-site interview, you can talk about how you might change your design if the system had to scale beyond that
 - Thank you for the time you are spending as a candidate with STORD!
