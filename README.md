@@ -14,11 +14,9 @@ The goal of this exercise is to create a URL shortener web application in the sa
 - Implement your solution, including test cases for your application code. 
 - We will execute your code using the `make` targets specified in `Makefile`. Edit the contents of `Makefile` to provide an interface for running and testing your application.
 - Include any other notes for our engineering team that you would like regarding your approach, assumptions you have made, how to run your code, how to use your application, etc in a file named `notes.txt`.
-- E-mail the point of contact that sent you this exercise and include either
---a) a link to a public GitHub or GitLab repository (this is the preferred method)
----if your github account is monitored, then please create a new github account and share that public repo link with us)
---or a compressed archive (.zip, .tar.gz) containing your solution;
--- and `Makefile`.
+- E-mail the point of contact that sent you this exercise. 
+  * Include the `Makefile` and
+  * A link to a public GitHub or GitLab repository. Note: if your github account is monitored, then create a new github account
 
 ## Evaluation
 Your submission will be evaluated along the following criteria by the Reviewer
