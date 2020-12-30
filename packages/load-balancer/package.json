@@ -1,0 +1,19 @@
+{
+  "name": "load-balancer",
+  "version": "0.1.0",
+  "description": "> TODO: description",
+  "author": "Michał Dziekoński <michal.dziekonski+github@gmail.com>",
+  "homepage": "https://github.com/mdziekon/url-shortener/tree/master/packages/load-balancer#readme",
+  "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdziekon/url-shortener.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/mdziekon/url-shortener/issues"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
