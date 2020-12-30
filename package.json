@@ -1,0 +1,27 @@
+{
+  "name": "url-shortener",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "description": "",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "serve": "lerna run serve",
+    "ci:test": "lerna run ci:test",
+    "ci:lint": "lerna run ci:lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdziekon/url-shortener.git"
+  },
+  "author": "Michał Dziekoński <michal.dziekonski+github@gmail.com>",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/mdziekon/url-shortener/issues"
+  },
+  "homepage": "https://github.com/mdziekon/url-shortener#readme"
+}

@@ -1,0 +1,54 @@
+name: Verify
+
+# Run this workflow every time a new commit is pushed to any branch
+on: push
+
+jobs:
+  # install dependencies and run test command
+  test:
+    name: Test code base
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version:
+          - 14.x
+
+    steps:
+      # 1: Setup node
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # 2: Checkout repository in the CWD
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # 3: Restore NPM cache (Linux & MacOS)
+      - name: Restore npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 4: Install root-level dependencies
+      - name: Install root dependencies
+        run: npm ci
+
+      # 5: Install packages dependencies
+      # (underneath, Lerna calls "npm ci")
+      - name: Install dependencies
+        run: npm run bootstrap
+
+      # 6: Run test command
+      - name: Run test command
+        run: npm run ci:test
+
+      # 7: Run lint command
+      - name: Run lint command
+        run: npm run ci:lint
+
