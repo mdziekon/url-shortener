@@ -1,0 +1,22 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "src",
+  ],
+  "exclude": [
+    "node_modules",
+    ".git",
+    "coverage",
+    "build",
+    "test",
+    "**/__test__/**",
+    "**/*.test.ts"
+  ]
+}
