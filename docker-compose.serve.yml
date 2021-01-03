@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  backend-db-1:
+    image: 'postgres:13-alpine'
+    environment:
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpassword
+      - POSTGRES_DB=ex_url_shortener
+    volumes:
+      - .docker/volumes/backend-db-1/data:/var/lib/postgresql/data
+    ports:
+      - 15432:5432
+  backend-srv-1:
+    build:
+      context: ./packages/backend
+      dockerfile: Dockerfile
+    environment:
+      - APP_DB_NAME=ex_url_shortener
+      - APP_DB_HOST=backend-db-1:5432
+      - APP_DB_USER=testuser
+      - APP_DB_PASSWORD=testpassword
+      - APP_SERVER_HOST=0.0.0.0
+      - APP_SERVER_PORT=10080
+    depends_on:
+      - backend-db-1
+  # backend-srv-2:
+  #   build:
+  #     context: ./packages/backend
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - backend-db-1
+  frontend-srv-1:
+    build:
+      context: ./packages/frontend
+      dockerfile: Dockerfile
+  frontend-srv-2:
+    build:
+      context: ./packages/frontend
+      dockerfile: Dockerfile
+  load-balancer:
+    build:
+      context: ./packages/load-balancer
+      dockerfile: Dockerfile
+    depends_on:
+      - frontend-srv-1
+      - frontend-srv-2
+      - backend-srv-1
+      # - backend-srv-2
+    ports:
+      - 8080:10080
