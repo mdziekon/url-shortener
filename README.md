@@ -1,5 +1,7 @@
 # url-shortener
 
+Original task description in [README.original.md](./README.original.md).
+
 ## Warning
 
 **All of the provided configs & passwords (as seen in docker-compose & Makefile files) should NOT be used "as-is" in production. All of these are simple examples created & committed into this repository to show off basic use cases, and should be used only in local mode for testing purposes.**
@@ -44,3 +46,8 @@ All commands are marked with optional `sudo`, indicating that their underlying s
     _Main frontend client served as a web app._
 - `load-balancer`  
     _Main gateway, responsible for all traffic routing. Handles the shortened link redirection._
+
+## Implementation details
+
+- Shortened URLs (slugs) are generated as pseudo-random base64-ish strings of length 10. This gives 2^60 possible slugs, which is approx. 10^18 possible values, making it really unlikely that a collision will occur. That's why there's no link creation retry logic anywhere.
+- Slugs de-duplication has been left out on purpose. First, it might be desireable by the users to generate different slugs for just one link (eg. for tracking purposes, assuming this project would be extended to support this kind of capability). Second, since the slugs values pool is so huge, there's no need to worry about running out of possible values (excluding malicious usage like DDoS attacks or bots, the security aspect should be handled separately).
