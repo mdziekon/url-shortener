@@ -25,4 +25,4 @@ services:
       - APP_SERVER_PORT=10080
     depends_on:
       - backend-db-1
-    entrypoint: ["npm", "run", "cli:init-postgres-db"]
+    entrypoint: ["./scripts/run/wait-for", "backend-db-1:5432", "--timeout=30", "--", "npm", "run", "cli:init-postgres-db"]

@@ -21,10 +21,6 @@ const initDb = async (initParams: InitDbParams) => {
     password: initParams.db.password,
   });
 
-  // TODO: Hardcoded wait period to allow the DB container to start up for the first time.
-  // Not the best solution, but works for now.
-  await wait(5000);
-
   await orm.connect();
 
   try {

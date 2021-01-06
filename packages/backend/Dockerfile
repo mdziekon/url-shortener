@@ -21,6 +21,5 @@ FROM node:lts-alpine as final-image
 WORKDIR /usr/app
 COPY package.json package-lock.json ./
 COPY --from=build-app /usr/app/build ./build
+COPY --from=build-app /usr/app/scripts/run ./scripts/run
 COPY --from=build-app /usr/app/node_modules ./node_modules
-
-CMD npm run serve
