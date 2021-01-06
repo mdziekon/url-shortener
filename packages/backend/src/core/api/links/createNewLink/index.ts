@@ -23,6 +23,8 @@ export const createNewLink = async (params: {
     components: { persistence },
   } = ctx;
 
+  const requestCtx = {};
+
   const newLinkUidResult = await generateNewRandomLinkUid();
 
   if (!newLinkUidResult.isSuccess) {
@@ -35,6 +37,7 @@ export const createNewLink = async (params: {
 
   const findDuplicateResult = await persistence.links.findLinkByLinkUid({
     linkUid: newLinkUid,
+    requestCtx,
   });
 
   if (findDuplicateResult.isSuccess && findDuplicateResult.payload.entity) {
@@ -46,6 +49,7 @@ export const createNewLink = async (params: {
   const addLinkResult = await persistence.links.addLink({
     linkUid: newLinkUid,
     linkUrl: input.linkUrl,
+    requestCtx,
   });
 
   if (!addLinkResult.isSuccess) {

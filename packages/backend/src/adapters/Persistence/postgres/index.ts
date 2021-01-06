@@ -23,10 +23,8 @@ export const initAdapter = async (initParams: InitAdapterParams): Promise<Persis
 
   await orm.connect();
 
-  const linksRepository = orm.em.getRepository(LinkDbEntity);
-
   const linksStore = await initLinksStore({
-    repository: linksRepository,
+    entityManager: orm.em,
   });
 
   return {

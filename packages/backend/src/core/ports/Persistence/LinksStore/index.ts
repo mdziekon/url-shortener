@@ -4,6 +4,7 @@ import { Link } from '../../../entities/Link';
 
 type FindLinkByLinkUidInputParams = {
   linkUid: string;
+  requestCtx: Record<string, unknown>;
 };
 type FindLinkByLinkUidErrorType = { code: 'UNKNOWN_ERROR' };
 type FindLinkByLinkUidSuccessType = SuccessType<{ entity?: Link }>;
@@ -14,6 +15,7 @@ type FindLinkByLinkUidFailureType = FailureType<{
 type AddLinkInputParams = {
   linkUid: string;
   linkUrl: string;
+  requestCtx: Record<string, unknown>;
 };
 type AddLinkErrorType = { code: 'UNKNOWN_ERROR' };
 type AddLinkSuccessType = SuccessType<unknown>;

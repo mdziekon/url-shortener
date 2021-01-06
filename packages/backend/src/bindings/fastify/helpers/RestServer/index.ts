@@ -1,3 +1,4 @@
+import { RequestContext } from '@mikro-orm/core';
 import fastify, { RouteHandlerMethod } from 'fastify';
 
 export interface RouteEntry {
