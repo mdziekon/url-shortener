@@ -25,4 +25,14 @@ services:
       - APP_SERVER_PORT=10080
     depends_on:
       - backend-db-1
+    ports:
+      - 12345:12345
     entrypoint: ["./scripts/run/wait-for", "backend-db-1:5432", "--timeout=30", "--", "npm", "run", "cli:init-postgres-db"]
+  finish-setup:
+    build:
+      context: ./packages/backend
+      dockerfile: Dockerfile
+      target: base-with-sources
+    depends_on:
+      - backend-db-1-init
+    entrypoint: ["./scripts/run/wait-for", "backend-db-1-init:12345", "--timeout=30"]

@@ -1,7 +1,7 @@
+import fastify from 'fastify';
 import { MikroORM } from '@mikro-orm/core';
 import { LinkDbEntity } from '../../src/adapters/Persistence/postgres/entities/Link';
 import { loadConfig } from '../../src/bootstrap/default/utils/loadConfig';
-import { wait } from '../../src/common/utils/wait/index';
 
 type InitDbParams = {
   db: {
@@ -49,9 +49,15 @@ const run = async () => {
     throw exception;
   }
 
-  console.log('Migration complete');
+  console.log('Migration complete, starting an HTTP server on port :12345 to signal readiness...');
 
-  process.exit(0);
+  const signalServer = fastify();
+
+  signalServer.listen(12345, '0.0.0.0', (error, address) => {
+    console.log('Server is ready');
+  });
+
+  // process.exit(0);
 };
 
 run();
