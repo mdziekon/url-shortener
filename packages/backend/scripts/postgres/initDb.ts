@@ -1,7 +1,7 @@
+import fastify from 'fastify';
 import { MikroORM } from '@mikro-orm/core';
 import { LinkDbEntity } from '../../src/adapters/Persistence/postgres/entities/Link';
 import { loadConfig } from '../../src/bootstrap/default/utils/loadConfig';
-import { wait } from '../../src/common/utils/wait/index';
 
 type InitDbParams = {
   db: {
@@ -20,10 +20,6 @@ const initDb = async (initParams: InitDbParams) => {
     clientUrl: `postgresql://${initParams.db.user}@${initParams.db.host}`,
     password: initParams.db.password,
   });
-
-  // TODO: Hardcoded wait period to allow the DB container to start up for the first time.
-  // Not the best solution, but works for now.
-  await wait(5000);
 
   await orm.connect();
 
@@ -53,9 +49,15 @@ const run = async () => {
     throw exception;
   }
 
-  console.log('Migration complete');
+  console.log('Migration complete, starting an HTTP server on port :12345 to signal readiness...');
 
-  process.exit(0);
+  const signalServer = fastify();
+
+  signalServer.listen(12345, '0.0.0.0', (error, address) => {
+    console.log('Server is ready');
+  });
+
+  // process.exit(0);
 };
 
 run();
