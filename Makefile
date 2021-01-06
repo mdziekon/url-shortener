@@ -1,7 +1,5 @@
-.RECIPEPREFIX = >
-
 all:
-> @echo "Available commands: setup | server | test"
+	@echo "Available commands: setup | server | test"
 
 .PHONY: $(MAKECMDGOALS)
 
@@ -12,15 +10,15 @@ all:
 # anything else that needs to happen before your server is started
 # for the first time
 setup:
-> sh ./scripts/setup.sh
+	sh ./scripts/setup.sh
 
 # `make server` will be used after `make setup` in order to start
 # an http server process that listens on any unreserved port
 #	of your choice (e.g. 8080).
 server:
-> sh ./scripts/serve.sh
+	sh ./scripts/serve.sh
 
 # `make test` will be used after `make setup` in order to run
 # your test suite.
 test:
-> sh ./scripts/test.sh
+	sh ./scripts/test.sh
