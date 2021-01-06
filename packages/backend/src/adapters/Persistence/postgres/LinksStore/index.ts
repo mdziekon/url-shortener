@@ -1,18 +1,35 @@
-import { EntityRepository } from '@mikro-orm/core';
+import { EntityManager, EntityRepository } from '@mikro-orm/core';
 import { PersistencePort } from '../..';
 import { failure, success } from '../../../../common/utils/result';
 import { toLinkEntity } from '../../../../core/entities/Link';
 import { LinkDbEntity } from '../entities/Link';
 
 type InitLinksStoreParams = {
-  repository: EntityRepository<LinkDbEntity>;
+  entityManager: EntityManager;
 };
 
 export const initLinksStore = async (initParams: InitLinksStoreParams): Promise<PersistencePort['links']> => {
-  const linksRepository = initParams.repository;
+  type RequestCtx = Record<string, unknown>;
+  const entityManagers = new WeakMap<RequestCtx, EntityManager>();
+
+  const getEntityManager = (requestCtx: RequestCtx) => {
+    if (!entityManagers.has(requestCtx)) {
+      entityManagers.set(requestCtx, initParams.entityManager.fork());
+    }
+
+    const existingManager = entityManagers.get(requestCtx);
+
+    if (!existingManager) {
+      throw new Error();
+    }
+    return existingManager;
+  };
 
   const findLinkByLinkUid: PersistencePort['links']['findLinkByLinkUid'] = async (params) => {
     try {
+      const emFork = getEntityManager(params.requestCtx);
+      const linksRepository = emFork.getRepository(LinkDbEntity);
+
       const findResult = await linksRepository.find(
         {
           linkUid: params.linkUid,
@@ -51,6 +68,9 @@ export const initLinksStore = async (initParams: InitLinksStoreParams): Promise<
 
   const addLink: PersistencePort['links']['addLink'] = async (params) => {
     try {
+      const emFork = getEntityManager(params.requestCtx);
+      const linksRepository = emFork.getRepository(LinkDbEntity);
+
       const newLink = new LinkDbEntity({
         linkUid: params.linkUid,
         linkUrl: params.linkUrl,

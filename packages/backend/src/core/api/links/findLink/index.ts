@@ -22,8 +22,11 @@ export const findLink = async (params: {
     components: { persistence },
   } = ctx;
 
+  const requestCtx = {};
+
   const findLinkResult = await persistence.links.findLinkByLinkUid({
     linkUid: input.linkUid,
+    requestCtx,
   });
 
   if (!findLinkResult.isSuccess) {
